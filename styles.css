@@ -1,0 +1,244 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --text: #1d2433;
+  --muted: #5b6478;
+  --border: #dfe5ef;
+  --safe: #0f9d58;
+  --warn: #f9a825;
+  --risk: #ef6c00;
+  --critical: #c62828;
+  --neutral: #607d8b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  width: min(1100px, 95vw);
+  margin: 24px auto;
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.disclaimer {
+  border-left: 6px solid var(--risk);
+  background: #fff8f1;
+}
+
+.grid.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .grid.two-col { grid-template-columns: 1fr; }
+}
+
+h1, h2, h3 { margin-top: 0; }
+h3 { margin-top: 16px; }
+
+.field {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+button {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+button:hover { background: #f0f4fa; }
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.pill {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.pill.safe { background: var(--safe); }
+.pill.warn { background: var(--warn); color: #1a1a1a; }
+.pill.risk { background: var(--risk); }
+.pill.critical { background: var(--critical); }
+.pill.neutral { background: var(--neutral); }
+
+.result-list {
+  display: grid;
+  gap: 8px;
+}
+
+.result-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.result-item .name { font-weight: 600; }
+
+.result-item .badge {
+  font-size: 12px;
+  margin-left: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.badge.normal { background: #e8f5e9; color: #2e7d32; }
+.badge.low, .badge.high { background: #fff8e1; color: #8d6e63; }
+.badge.critical { background: #ffebee; color: #b71c1c; }
+
+.range-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.range-row {
+  display: grid;
+  grid-template-columns: 220px 1fr 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+@media (max-width: 700px) {
+  .range-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  align-items: end;
+}
+
+@media (max-width: 900px) {
+  .preset-grid { grid-template-columns: 1fr; }
+}
+
+.trend-controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: end;
+}
+
+@media (max-width: 700px) {
+  .trend-controls { grid-template-columns: 1fr; }
+}
+
+#trend-canvas {
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fcfdff;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+#history-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+#history-table th,
+#history-table td {
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  padding: 10px 8px;
+  vertical-align: top;
+}
+
+#history-table th {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.snapshot {
+  max-width: 420px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.status-tag {
+  font-size: 12px;
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: #fff;
+}
+
+.status-tag.safe { background: var(--safe); }
+.status-tag.warn { background: var(--warn); color: #1a1a1a; }
+.status-tag.risk { background: var(--risk); }
+.status-tag.critical { background: var(--critical); }
+.status-tag.neutral { background: var(--neutral); }
+
+.table-empty {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.muted {
+  color: var(--muted);
+  margin-top: 0;
+}
+
+#pattern-notes {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+#last-analyzed {
+  margin-top: 0;
+}
